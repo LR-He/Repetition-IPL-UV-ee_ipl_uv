@@ -109,8 +109,8 @@ def LinearModel(n_jobs=int(os.getenv("SLURM_CPUS_PER_TASK",3)),
                                 cv=cv,
                                 param_grid={"alpha": 10**np.arange(-5,10,1,dtype=np.float64)})
     else:
-        if "normalize" not in best_params:
-            best_params["normalize"] = True
+#         if "normalize" not in best_params:
+#             best_params["normalize"] = True
         ridge_cv = Ridge(**best_params)
 
     return ridge_cv
