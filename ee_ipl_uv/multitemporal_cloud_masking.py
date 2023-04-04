@@ -183,7 +183,8 @@ class ModelCloudMasking:
             best_params = {"alpha": lmbda, "gamma":gamma}
 
         modelo = model_sklearn.KRRModel(best_params=best_params,verbose=1)
-        self._BuildDataSet(sampling_factor=sampling_factor, normalize=False,numPixels=numPixels)
+        #self._BuildDataSet(sampling_factor=sampling_factor, normalize=False,numPixels=numPixels)
+        self._BuildDataSet(sampling_factor=sampling_factor, normalize=False)
 
         ds_total = converters.eeFeatureCollectionToPandas(self.datos,
                                                           self.bands_modeling_estimation+["weight"],
