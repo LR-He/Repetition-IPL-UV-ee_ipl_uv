@@ -50,6 +50,7 @@ def fit_model_local(ds_total,model,
                       output_dataset)
         else:
             if hasattr(model, "named_steps"):
+                print("****",ds_total["weight"].values)
                 model.fit(ds_total[bands_estimation_input],
                           output_dataset,
                           randomizedsearchcv__sample_weight=ds_total["weight"].values)
