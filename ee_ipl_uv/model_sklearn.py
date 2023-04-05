@@ -53,7 +53,7 @@ def fit_model_local(ds_total,model,
                 model.fit(ds_total[bands_estimation_input],
                           output_dataset,
                           #randomizedsearchcv__sample_weight=ds_total["weight"].values)
-                          randomizedsearchcv_sample_weight=ds_total["weight"].values)
+                         logisticregression__sample_weight=ds_total["weight"].values)
             else:
                 model.fit(ds_total[bands_estimation_input],
                           output_dataset,
