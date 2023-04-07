@@ -7,8 +7,10 @@ def clouds_bqa_landsat(ee_img):
     # var cloud = qa.bitwiseAnd(1 << 4).neq(0);
     # var shadow = qa.bitwiseAnd(1 << 3).neq(0);
     qa = ee_img.select(['QA_PIXEL'], ["cloud"])
-    cloud = qa.bitwiseAnd(1 << 4).neq(0)
-    shadow = qa.bitwiseAnd(1 << 3).neq(0)
+    #cloud = qa.bitwiseAnd(1 << 4).neq(0)int("0000000000010000", 2)
+    #shadow = qa.bitwiseAnd(1 << 3).neq(0)
+    cloud = int("0000000000010000", 2)
+    shadow = int("0000000000001000", 2)
     return qa.bitwiseAnd(cloud).gt(0).Or(qa.bitwiseAnd(shadow).gt(0))
 
 
