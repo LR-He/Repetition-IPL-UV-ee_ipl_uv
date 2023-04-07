@@ -13,7 +13,8 @@ def clouds_bqa_landsat(ee_img):
 
 
 class L8L1TImage:
-    def __init__(self, index, collection="LANDSAT/LC08/C01/T1_TOA"):
+    #def __init__(self, index, collection="LANDSAT/LC08/C01/T1_TOA"):
+    def __init__(self, index, collection="LANDSAT/LC08/C02/T1_RT/"):
         if collection.endswith("/"):
             collection = collection[:-1]
         self.ee_img = ee.Image(collection+"/"+index)
