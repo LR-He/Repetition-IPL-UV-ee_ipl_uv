@@ -93,7 +93,7 @@ def MaybeDownloadThumb(image, params={"format": "jpg"}, image_name=None,
         os.remove(image_name)
 
     url = image.getThumbURL(params)
-
+    print("MaybeDownloadThumb-link: "+url)
     r_link = requests.get(url, stream=True)
     if r_link.status_code == 200:
         with open(image_name, 'wb') as f:
@@ -132,7 +132,7 @@ def MaybeDownload(image, image_name_dir=None, path=os.getcwd(), remove_zip=False
         return image_name_dir
     
     url = image.getDownloadURL()
-    # print("link: "+url)
+    print("MaybeDownload-link: "+url)
     r_link = requests.get(url, stream=True)
     if r_link.status_code == 200:
         with open(image_name_zip, 'wb') as f:
