@@ -453,7 +453,8 @@ def ImagesWithCC(wrapper_img, start_date, end_date, region_of_interest=None):
 
         return img
 
-    imgcoll = imgcoll.map(_count_valid).filter(ee.Filter.greaterThanOrEquals('valids', .5))
+    #imgcoll = imgcoll.map(_count_valid).filter(ee.Filter.greaterThanOrEquals('valids', .5))
+    imgcoll = imgcoll.map(_count_valid).filter(ee.Filter.greaterThanOrEquals('valids', .3))
 
     if hasattr(wrapper_img, "toa_norm_fun"):
         imgcoll = imgcoll.map(wrapper_img.toa_norm_fun)
