@@ -34,7 +34,7 @@ def processingOne(img_index,image_collection_name,region_of_interest=None,NUMBER
     image_wrap  = image_wrapper.L8L1TImage(img_index,image_collection_name)
 
     # 根据输入的原始有云图片寻找前一段时间的所有图像
-    imgcoll = multitemporal_cloud_masking.PreviousImagesWithCC(image_wrap,region_of_interest,NUMBER_IMAGES=30)
+    imgcoll = multitemporal_cloud_masking.PreviousImagesWithCC(image_wrap,region_of_interest=region_of_interest,NUMBER_IMAGES=30)
     featurecol = converters.eeImageCollectionToPandas(imgcoll,["system:time_start","CC","system:index"])
 
     # 根据“CC”筛选出云量少于 5 的最少云的 3 张“无云”图像
