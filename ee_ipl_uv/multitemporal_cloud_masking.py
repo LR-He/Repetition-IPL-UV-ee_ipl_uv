@@ -516,6 +516,7 @@ def SelectImagesTraining(wrapper_img,
     :rtype ee.Image
     """
     imgColl = PreviousImagesWithCC(wrapper_img, region_of_interest, REVISIT_DAY_PERIOD)
+    print(imgColl.size().getInfo())
     imgColl = imgColl.filter(ee.Filter.lt("CC", threshold_cc))
     size_img_coll = ee.Number(imgColl.size())
     print(size_img_coll.getInfo())
