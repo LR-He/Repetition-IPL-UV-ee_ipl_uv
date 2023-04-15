@@ -518,6 +518,7 @@ def SelectImagesTraining(wrapper_img,
     imgColl = PreviousImagesWithCC(wrapper_img, region_of_interest, REVISIT_DAY_PERIOD)
     imgColl = imgColl.filter(ee.Filter.lt("CC", threshold_cc))
     size_img_coll = ee.Number(imgColl.size())
+    print(size_img_coll.getInfo())
     imagenes_training = imgColl.toList(count=num_images, offset=size_img_coll.subtract(num_images))
 
     # join images into a single image
