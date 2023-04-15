@@ -43,6 +43,7 @@ def processingOne(img_index,image_collection_name,region_of_interest=None,NUMBER
                                         region_of_interest=region_of_interest,
                                         num_images=max_lags,
                                         threshold_cc=5)
+    print(image_with_lags.getInfo())
     
     # 使用 3 张“无云”图像通过中值滤波器计算出背景图
     reflectance_bands_landsat8 = image_wrap.reflectance_bands()
