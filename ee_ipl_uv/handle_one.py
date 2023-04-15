@@ -85,8 +85,8 @@ def processingOne(img_index,image_collection_name,region_of_interest=None,NUMBER
     color_sequence = [  '1f77b4', 'ff7f0e', '2ca02c', 'd62728',
                         '9467bd', '8c564b', 'e377c2', '7f7f7f',
                         'bcbd22', '17becf']
-    THRESHOLD_DIFFERENCE = 4000   # .04 
-    THRESHOLD_REFLECTANCE = 17500   #.175
+    THRESHOLD_DIFFERENCE = 3000   # .04 
+    THRESHOLD_REFLECTANCE = 12000   #.175
     cloud_score_threshold_original = multitemporal_cloud_score.gt(THRESHOLD_DIFFERENCE).multiply(reflectance_score.gt(THRESHOLD_REFLECTANCE))
     
     # 对云掩膜进行云边缘柔化
