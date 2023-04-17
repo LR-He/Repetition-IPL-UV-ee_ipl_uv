@@ -34,13 +34,19 @@ class L8L1TImage:
         row = matches.get(2)
         if region_of_interest is None:
             # region_of_interest = ee.Element.geometry(self.ee_img)
-            landsat_collection = ee.ImageCollection(self.collection) \
-                .filter(ee.Filter.eq("WRS_ROW", row)) \   #int(row))) \
-                .filter(ee.Filter.eq("WRS_PATH", path))    #int(path)))
+#             landsat_collection = ee.ImageCollection(self.collection) \
+#                 .filter(ee.Filter.eq("WRS_ROW", int(row))) \
+#                 .filter(ee.Filter.eq("WRS_PATH", int(path)))
+              landsat_collection = ee.ImageCollection(self.collection) \
+                .filter(ee.Filter.eq("WRS_ROW", row)) \
+                .filter(ee.Filter.eq("WRS_PATH", path))
         else:
-            landsat_collection = ee.ImageCollection(self.collection) \
+#             landsat_collection = ee.ImageCollection(self.collection) \
+#                 .filterBounds(region_of_interest) \
+#                 .filter(ee.Filter.eq("WRS_ROW", int(row)))
+              landsat_collection = ee.ImageCollection(self.collection) \
                 .filterBounds(region_of_interest) \
-                .filter(ee.Filter.eq("WRS_ROW", row))   #int(row)))
+                .filter(ee.Filter.eq("WRS_ROW", row))
 
         return landsat_collection
 
