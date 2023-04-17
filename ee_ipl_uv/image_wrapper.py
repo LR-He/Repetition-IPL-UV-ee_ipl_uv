@@ -17,26 +17,30 @@ def clouds_bqa_landsat(ee_img):
 
 class L8L1TImage:
     #def __init__(self, index, collection="LANDSAT/LC08/C01/T1_TOA"):
-    def __init__(self, index, collection="LANDSAT/LC08/C02/T1_RT/"):
+    def __init__(self, index, collection="LANDSAT/LC08/C02/T1_RT"):
         if collection.endswith("/"):
             collection = collection[:-1]
-        self.ee_img = ee.Image(collection+"/"+index)
+        #self.ee_img = ee.Image(collection+"/"+index)
+        self.ee_img = ee.Image(ee.String(collection).cat("/").cat(index))
         self.collection = collection
         self.index = index
         self.clouds_bqa_fun = clouds_bqa_landsat
 
     def collection_similar(self, region_of_interest=None):
-        matches = re.match("LC08_(\d{3})(\d{3})_\d{8}", self.index)
-        path, row = matches.groups()
+        #matches = re.match("LC08_(\d{3})(\d{3})_\d{8}", self.index)
+        matches = self.index.match("LC08_(\d{3})(\d{3})_\d{8}")
+        #path, row = matches.groups()
+        path = matches.get(1)
+        row = matches.get(2)
         if region_of_interest is None:
             # region_of_interest = ee.Element.geometry(self.ee_img)
             landsat_collection = ee.ImageCollection(self.collection) \
-                .filter(ee.Filter.eq("WRS_ROW", int(row))) \
-                .filter(ee.Filter.eq("WRS_PATH", int(path)))
+                .filter(ee.Filter.eq("WRS_ROW", row)) \   #int(row))) \
+                .filter(ee.Filter.eq("WRS_PATH", path))    #int(path)))
         else:
             landsat_collection = ee.ImageCollection(self.collection) \
                 .filterBounds(region_of_interest) \
-                .filter(ee.Filter.eq("WRS_ROW", int(row)))
+                .filter(ee.Filter.eq("WRS_ROW", row))   #int(row)))
 
         return landsat_collection
 
