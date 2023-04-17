@@ -26,9 +26,9 @@ def getImgColl(image_wrap,region_of_interest=None,NUMBER_IMAGES=30):
  
 
 # 处理一张图片的过程
-def processingOne(img_index_ee,img_index,image_collection_name,region_of_interest=None,NUMBER_IMAGES=30):
+def processingOne(img_index,image_collection_name,region_of_interest=None,NUMBER_IMAGES=30):
     
-    image_predict_clouds = ee.Image(img_index_ee)
+    image_predict_clouds = ee.Image(image_collection_name+'/'+img_index)
 
     # 根据index获取img_wrap
     image_wrap  = image_wrapper.L8L1TImage(img_index,image_collection_name)
