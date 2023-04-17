@@ -20,8 +20,7 @@ class L8L1TImage:
     def __init__(self, index, collection="LANDSAT/LC08/C02/T1_RT/"):
         if collection.endswith("/"):
             collection = collection[:-1]
-        #self.ee_img = ee.Image(collection+"/"+index)
-        self.ee_img = ee.Image(ee.String(collection).cat(ee.String("/")).cat(index))
+        self.ee_img = ee.Image(collection+"/"+index)
         self.collection = collection
         self.index = index
         self.clouds_bqa_fun = clouds_bqa_landsat
