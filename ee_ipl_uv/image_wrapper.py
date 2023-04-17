@@ -21,7 +21,7 @@ class L8L1TImage:
         if collection.endswith("/"):
             collection = collection[:-1]
         #self.ee_img = ee.Image(collection+"/"+index)
-        self.ee_img = ee.Image(ee.String(collection).cat(ee.String("/").cat(index))
+        self.ee_img = ee.Image(ee.String(collection).cat(ee.String("/")).cat(index))
         self.collection = collection
         self.index = index
         self.clouds_bqa_fun = clouds_bqa_landsat
