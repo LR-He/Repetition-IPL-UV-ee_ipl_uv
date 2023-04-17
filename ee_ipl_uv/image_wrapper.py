@@ -28,7 +28,7 @@ class L8L1TImage:
 
     def collection_similar(self, region_of_interest=None):
         #matches = re.match("LC08_(\d{3})(\d{3})_\d{8}", self.index)
-        matches = self.index.match("LC08_(\d{3})(\d{3})_\d{8}")
+        matches = ee.String(self.index).match("LC08_(\d{3})(\d{3})_\d{8}")
         #path, row = matches.groups()
         path = matches.get(1)
         row = matches.get(2)
