@@ -100,7 +100,7 @@ def processingOne(img_index,image_collection_name,region_of_interest=None,NUMBER
     cloud_score_threshold_radius_vis = cloud_score_threshold_radius.visualize(max=1,min=0,palette=color_sequence[:2])  # color_sequence[:2] = ['1f77b4', 'ff7f0e']
     
     # 将划分好的云覆盖在原始图像上
-    imageRGB = image_predict_clouds.visualize(max=30000,bands=["B4","B3","B2"])
+    imageRGB = image_predict_clouds.select(reflectance_bands_landsat8).visualize(max=30000,bands=["B4","B3","B2"])
     mosaic_radius = ee.ImageCollection.fromImages([imageRGB, cloud_score_threshold_radius_vis]).mosaic()
 
     # 原始输入的有云图像删除云的部分：
