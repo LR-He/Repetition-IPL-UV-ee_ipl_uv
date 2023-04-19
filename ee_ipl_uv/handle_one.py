@@ -54,7 +54,7 @@ def processingOne(img_index,image_collection_name,region_of_interest=None,NUMBER
     background_prediction = img_percentile.select(reflectance_bands_landsat8_perc50)
     
     # 获取差异图像（输入的原始有云图像 - 估计的背景图像）
-    img_differences = image_predict_clouds.subtract(background_prediction)
+    img_differences = image_predict_clouds.select(reflectance_bands_landsat8).subtract(background_prediction)
 #     image_to_predict =image_with_lags.select(reflectance_bands_landsat8)
 #     img_differences = image_to_predict.subtract(background_prediction)
 #     return background_prediction,img_differences
