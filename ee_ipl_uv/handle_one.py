@@ -79,7 +79,10 @@ def processingOne(img_index,image_collection_name,region_of_interest=None,NUMBER
     result = img_differences_normalized.cluster(clusterer)
 
     # 对聚类结果根据阈值划分为云
-    multitemporal_cloud_score,reflectance_score  = clustering.SelectClusters(image_to_predict,background_prediction,
+#     multitemporal_cloud_score,reflectance_score  = clustering.SelectClusters(image_to_predict,background_prediction,
+#                                                                          result,n_clusters=nClusters,
+#                                                                          region_of_interest=region_of_interest)
+    multitemporal_cloud_score,reflectance_score  = clustering.SelectClusters(image_predict_clouds,background_prediction,
                                                                          result,n_clusters=nClusters,
                                                                          region_of_interest=region_of_interest)
     
