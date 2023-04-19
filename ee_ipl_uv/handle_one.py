@@ -108,6 +108,12 @@ def processingOne(img_index,image_collection_name,region_of_interest=None,NUMBER
     # 根据调整后的背景图填充到已经删除云的原始输入图像中，得到填补好的的无云图像。
     img_regain_radius = img_without_cloud_radius.select("vis-red","vis-green","vis-blue").clip(region_of_interest).where(img_without_cloud_radius.select("vis-red","vis-green","vis-blue").clip(region_of_interest).Not(),background_prediction_adjust.select("B4_p50","B3_p50","B2_p50"))
     
+    # 将返回的结果组成一个字典
+    keys_list = ["image_predict_clouds","imgcoll","image_with_lags","background_prediction","img_differences","diff_norm_vis","result","multitemporal_cloud_score","reflectance_score","mosaic_radius","img_without_cloud_radius","img_regain_radius"]
+    values_list = [image_predict_clouds,imgcoll,image_with_lags,background_prediction,img_differences,diff_norm_vis,result,multitemporal_cloud_score,reflectance_score,mosaic_radius,img_without_cloud_radius,img_regain_radius]
+    result_dict = dict(zip(keys_list, values_list))
+    
+    return result_dict
     # 返回：
     #   image_predict_clouds：原始有云图像
     #   imgcoll：当前图片前的所有图像
@@ -122,9 +128,10 @@ def processingOne(img_index,image_collection_name,region_of_interest=None,NUMBER
     #   mosaic_radius：云覆盖图
     #   img_without_cloud_radius：云删除图像
     #   img_regain_radius：云填补图像
-    return (image_predict_clouds,imgcoll,featurecol,image_with_lags,background_prediction,
-            img_differences,diff_norm_vis,result,multitemporal_cloud_score,reflectance_score,
-            mosaic_radius,img_without_cloud_radius,img_regain_radius)
+#     return (image_predict_clouds,imgcoll,featurecol,image_with_lags,background_prediction,
+#             img_differences,diff_norm_vis,result,multitemporal_cloud_score,reflectance_score,
+#             mosaic_radius,img_without_cloud_radius,img_regain_radius)
+
 
 
     
