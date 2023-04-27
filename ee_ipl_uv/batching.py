@@ -63,7 +63,7 @@ def doBatching(image_collection_name, start_date, end_date, region_of_interest):
     # print(result_dicts_list)
     # print(len(result_dicts_list))
     
-    return result_dicts_list
+    return imgcoll_org, result_dicts_list
 
 
 
