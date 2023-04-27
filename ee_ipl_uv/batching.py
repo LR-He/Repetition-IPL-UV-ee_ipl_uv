@@ -13,22 +13,15 @@ from ee_ipl_uv import predefined_cloud_algorithms
 
 from ee_ipl_uv import handle_one
 
-# class Caption():
-#     num_figure = 1
-#     def __init__(self,s):
-#         self.s = s
-#         self.current_number = Caption.num_figure
-#         Caption.num_figure = Caption.num_figure+1 
-#     def _repr_html_(self):
-#         return '<center>Figure {0}. {1}</center>'.format(self.current_number,self.s)
-
 # 获取所有图片的 index 。
 def getImgId(img):
   return ee.Image(img).id()
 
+# 处理单个
 def handleOne(img_index):
   return handle_one.processingOne(img_index,image_collection_name,region_of_interest=region_of_interest,NUMBER_IMAGES=30)
 
+# 批量处理
 def doBatching(image_collection_name, start_date, end_date, region_of_interest):
     imgcoll_org = ee.ImageCollection(image_collection_name).filterDate(start_date, end_date).filterBounds(region_of_interest).sort("system:time_start")
     # print(imgcoll_org.getInfo())
