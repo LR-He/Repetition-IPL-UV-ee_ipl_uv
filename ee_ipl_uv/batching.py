@@ -1,5 +1,5 @@
 import ee
-improt datetime
+import datetime
 
 # from datetime import datetime
 # from IPython.display import Image, display
