@@ -1,4 +1,5 @@
 import ee
+improt datetime
 
 # from datetime import datetime
 # from IPython.display import Image, display
@@ -47,6 +48,12 @@ def doBatching(image_collection_name, start_date, end_date, region_of_interest):
     # print(img_index_list[0])   # LC08_122044_20220903
     # print(type(img_index_list[0]))  # <class 'str'>
 
+    # 获取图片时间
+    img_time_list = []
+    for i in range(len(img_index_list)):
+      img_time = datetime.datetime.utcfromtimestamp(ee.Image(img_list.get(i)).get("system:time_start").getInfo()/1000)
+      img_time_list.append(img_time)
+      
     # 循环处理
     result_dicts_list = []
     for index in img_index_list:
@@ -56,7 +63,7 @@ def doBatching(image_collection_name, start_date, end_date, region_of_interest):
     # print(result_dicts_list)
     # print(len(result_dicts_list))
     
-    return imgcoll_org, result_dicts_list
+    return imgcoll_org, img_time_list, result_dicts_list
 
 
 
