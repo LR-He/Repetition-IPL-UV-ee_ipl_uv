@@ -18,7 +18,7 @@ def getImgId(img):
   return ee.Image(img).id()
 
 # 处理单个
-def handleOne(img_index):
+def handleOne(img_index,image_collection_name,region_of_interest):
   return handle_one.processingOne(img_index,image_collection_name,region_of_interest=region_of_interest,NUMBER_IMAGES=30)
 
 # 批量处理
@@ -50,7 +50,7 @@ def doBatching(image_collection_name, start_date, end_date, region_of_interest):
     # 循环处理
     result_dicts_list = []
     for index in img_index_list:
-      result_dict = handleOne(index)
+      result_dict = handleOne(index,image_collection_name,region_of_interest)
       result_dicts_list.append(result_dict)
 
     # print(result_dicts_list)
