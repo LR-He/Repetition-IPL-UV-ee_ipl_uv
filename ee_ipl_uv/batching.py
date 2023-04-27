@@ -13,14 +13,14 @@ from ee_ipl_uv import predefined_cloud_algorithms
 
 from ee_ipl_uv import handle_one
 
-class Caption():
-    num_figure = 1
-    def __init__(self,s):
-        self.s = s
-        self.current_number = Caption.num_figure
-        Caption.num_figure = Caption.num_figure+1 
-    def _repr_html_(self):
-        return '<center>Figure {0}. {1}</center>'.format(self.current_number,self.s)
+# class Caption():
+#     num_figure = 1
+#     def __init__(self,s):
+#         self.s = s
+#         self.current_number = Caption.num_figure
+#         Caption.num_figure = Caption.num_figure+1 
+#     def _repr_html_(self):
+#         return '<center>Figure {0}. {1}</center>'.format(self.current_number,self.s)
 
 # 获取所有图片的 index 。
 def getImgId(img):
